@@ -118,7 +118,7 @@ def search_data():
         with open("data.json") as password_data:
             password_dict = json.load(password_data)
     except FileNotFoundError:
-        messagebox.showinfo(message="Your data is empty")
+        messagebox.showinfo(message="Json file not found")
     else:
         for data_key, data_value in password_dict.items():
             if web_name == data_key:
