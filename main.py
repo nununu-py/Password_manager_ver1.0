@@ -114,8 +114,12 @@ def open_txt_file():
 def search_data():
     web_name = website_text_input.get()
 
-    with open("data.json") as password_data:
-        password_dict = json.load(password_data)
+    try:
+        with open("data.json") as password_data:
+            password_dict = json.load(password_data)
+    except FileNotFoundError:
+        messagebox.showinfo(message="Your data is empty")
+    else:
         for data_key, data_value in password_dict.items():
             if web_name == data_key:
                 password = data_value["Password"]
